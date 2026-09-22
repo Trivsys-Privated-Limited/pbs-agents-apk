@@ -25,13 +25,12 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-      with:
-        cmdline-tools-version: 13.0
-        accept-android-sdk-licenses: true
+    - name: Set up Android SDK
+      run: |
+        export ANDROID_SDK_ROOT=$ANDROID_HOME
+        yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses > /dev/null 2>&1 || true
 
-    - name: Install npm dependencies
+    - name: Install dependencies
       run: npm install
 
     - name: Add Android platform
@@ -40,9 +39,8 @@ jobs:
     - name: Build Release APK
       run: npx cordova build android --release
 
-    - name: Upload APK Artifact
+    - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: PBS-Agents-APK
         path: platforms/android/app/build/outputs/apk/release/app-release.apk
-        retention-days: 30
