@@ -40,7 +40,7 @@ jobs:
       run: npx cordova build android --release
     
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: PBS-Agents-APK
         path: platforms/android/app/build/outputs/apk/release/app-release.apk
