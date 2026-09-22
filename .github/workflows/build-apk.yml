@@ -37,7 +37,7 @@ jobs:
       run: npx cordova platform add android
 
     - name: Build APK
-      run: npx cordova build android --release
+      run: npx cordova build android --release -- --packageType=apk
 
     - name: Find APK file
       run: find platforms -name "*.apk" -type f
@@ -46,4 +46,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: PBS-Agents-APK
-        path: platforms/android/app/build/outputs/apk/**/*.apk
+        path: '**/*.apk'
