@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <title>PBS Agents</title>
+    <link rel="stylesheet" href="css/index.css">
+    
+    <!-- OneSignal Web SDK -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "c78e24ff-eb25-4b0a-8263-196e991e1404",
+                allowLocalhostAsSecureOrigin: true
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="deviceready" class="blink">
+        <p class="event listening">Connecting...</p>
+    </div>
+    
+    <div id="app-container" style="width:100%; height:100%; display:none;">
+        <iframe id="app-iframe" src="https://agents.pbsdigitals.com" 
+                style="width:100%; height:100%; border:none; position:fixed; top:0; left:0;"></iframe>
+    </div>
+    
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
