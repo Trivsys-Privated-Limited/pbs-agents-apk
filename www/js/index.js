@@ -3,65 +3,53 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
     onDeviceReady: function() {
-        console.log('Device Ready - Initializing OneSignal');
+        console.log('Device Ready - Initializing OneSignal Native Plugin');
         
-        // Initialize OneSignal for Android (Cordova Native Plugin)
-        if (typeof OneSignal !== 'undefined' && OneSignal) {
+        // Initialize OneSignal for Android (Native Cordova Plugin)
+        if (typeof OneSignal !== 'undefined') {
+            console.log('OneSignal plugin detected');
             try {
-                // Initialize with App ID
-                OneSignal.setAppId("c78e24ff-eb25-4b0a-8263-196e991e1404");
+                // Initialize OneSignal with App ID (Native Plugin)
+                // App ID: c78e24ff-eb25-4b0a-8263-196e991e1404
+                OneSignal.initialize("c78e24ff-eb25-4b0a-8263-196e991e1404");
+                console.log('OneSignal.initialize() called');
                 
-                console.log('OneSignal initialized with App ID');
-                
-                // Request notification permission (Android 13+)
-                if (OneSignal.Notifications && OneSignal.Notifications.requestPermission) {
-                    OneSignal.Notifications.requestPermission(true).then(function(success) {
-                        console.log('OneSignal permission requested:', success);
-                    }).catch(function(error) {
-                        console.log('OneSignal permission error:', error);
-                    });
-                }
-                
-                // Handle notification opened
+                // Add event listeners BEFORE requesting permission
                 OneSignal.Notifications.addEventListener('click', function(event) {
-                    console.log('Notification clicked:', event);
-                    var notification = event.notification;
-                    console.log('Notification ID:', notification.id);
-                    console.log('Notification title:', notification.title);
+                    console.log('Notification clicked:', event.notification);
                 });
                 
-                // Handle notification received (foreground)
                 OneSignal.Notifications.addEventListener('foreground', function(event) {
-                    console.log('Notification received in foreground:', event);
-                    var notification = event.notification;
-                    console.log('Notification title:', notification.title);
-                    console.log('Notification body:', notification.body);
+                    console.log('Notification received (foreground):', event.notification);
                 });
                 
-                // Handle notification permission change
-                if (OneSignal.User) {
-                    OneSignal.User.pushSubscription.addEventListener('change', function(event) {
-                        console.log('Push subscription changed:', event);
-                        if (event.current.token) {
-                            console.log('Device push token:', event.current.token);
-                        }
-                    });
-                }
+                // Request notification permission for Android 13+
+                OneSignal.Notifications.requestPermission(true);
+                console.log('Notification permission requested');
                 
-                // Get and log push subscription ID
+                // Check subscription status
                 setTimeout(function() {
                     if (OneSignal.User && OneSignal.User.pushSubscription) {
-                        var pushSubscription = OneSignal.User.pushSubscription;
-                        console.log('OneSignal Push Subscription ID:', pushSubscription.id);
-                        console.log('OneSignal Push Token:', pushSubscription.token);
+                        var subId = OneSignal.User.pushSubscription.id;
+                        var token = OneSignal.User.pushSubscription.token;
+                        console.log('OneSignal Subscription ID:', subId);
+                        console.log('OneSignal Push Token:', token);
+                        
+                        if (subId) {
+                            console.log('Device is SUBSCRIBED to OneSignal');
+                        } else {
+                            console.log('Device is NOT subscribed - check permissions');
+                        }
+                    } else {
+                        console.log('OneSignal.User object not ready yet');
                     }
-                }, 1000);
+                }, 2000);
                 
             } catch(e) {
-                console.error('OneSignal initialization error:', e);
+                console.error('OneSignal initialization error:', e.message);
             }
         } else {
-            console.warn('OneSignal plugin not available');
+            console.error('OneSignal plugin NOT available - plugin may not be installed');
         }
         
         // Show app container
