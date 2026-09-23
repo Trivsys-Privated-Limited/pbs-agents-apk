@@ -5,18 +5,6 @@
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <title>PBS Agents</title>
     <link rel="stylesheet" href="css/index.css">
-    
-    <!-- OneSignal Web SDK -->
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "c78e24ff-eb25-4b0a-8263-196e991e1404",
-                allowLocalhostAsSecureOrigin: true
-            });
-        });
-    </script>
 </head>
 <body>
     <div id="deviceready" class="blink">
@@ -28,7 +16,10 @@
                 style="width:100%; height:100%; border:none; position:fixed; top:0; left:0;"></iframe>
     </div>
     
+    <!-- Cordova JS (MUST load before any custom JS) -->
     <script src="cordova.js"></script>
+    
+    <!-- OneSignal Cordova Plugin initialization -->
     <script src="js/index.js"></script>
 </body>
 </html>
