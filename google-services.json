@@ -1,43 +1,26 @@
 {
   "project_info": {
-    "project_number": "YOUR_PROJECT_NUMBER",
-    "firebase_url": "https://pbs-digitals-agents.firebaseio.com",
+    "project_number": "345639938817",
     "project_id": "pbs-digitals-agents",
-    "storage_bucket": "pbs-digitals-agents.appspot.com"
+    "storage_bucket": "pbs-digitals-agents.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:YOUR_PROJECT_NUMBER:android:YOUR_APP_ID",
+        "mobilesdk_app_id": "1:345639938817:android:fafc2d6f0549bbb6efc900",
         "android_client_info": {
           "package_name": "com.pbsdigitals.agents"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "YOUR_API_KEY"
+          "current_key": "AIzaSyBJwHcF-nSt6i95CtL6FjvXwiaZFJeJbLk"
         }
       ],
       "services": {
-        "analytics_service": {
-          "analytics_console_project_id": "pbs-digitals-agents"
-        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": []
         }
       }
     }
