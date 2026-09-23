@@ -18,15 +18,10 @@
         <preference name="UseSwiftLanguageVersion" value="5" />
         <preference name="FirebaseAppInvitesEnabled" value="true" />
     </platform>
-    
-    <!-- OneSignal Plugin -->
+        <!-- OneSignal Plugin -->
     <plugin name="onesignal-cordova-plugin" spec="^5.5.9">
         <variable name="ONESIGNAL_ANDROID_SDK_VERSION" value="5.1.7" />
     </plugin>
-    
-    <!-- Firebase/Google Play Services -->
-    <plugin name="cordova-plugin-firebase-core" spec="^1.4.0" />
-    
     <!-- Notification Permissions -->
     <plugin name="cordova-plugin-android-permissions" spec="^1.1.5" />
     <preference name="loglevel" value="debug" />
