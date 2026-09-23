@@ -14,9 +14,10 @@
 <platform name="android">
         <allow-intent href="market:*" />
         <preference name="GooglePlayServicesVersion" value="@integer/google_play_services_version" />
-        <!-- OneSignal Plugin Configuration -->
-        <preference name="UseSwiftLanguageVersion" value="5" />
-        <preference name="FirebaseAppInvitesEnabled" value="true" />
+        <!-- Android Permissions for Notifications -->
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+        </config-file>
     </platform>
         <!-- OneSignal Plugin -->
     <plugin name="onesignal-cordova-plugin" spec="^5.5.9">
