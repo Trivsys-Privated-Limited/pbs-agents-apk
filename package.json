@@ -12,16 +12,25 @@
   ],
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
+"dependencies": {
+    "onesignal-cordova-plugin": "^5.5.9",
+    "cordova-plugin-firebase-core": "^1.4.0",
+    "cordova-plugin-android-permissions": "^1.1.5"
+  },
   "devDependencies": {
-    "cordova-android": "^15.1.0",
-    "onesignal-cordova-plugin": "^5.5.9"
+    "cordova": "^12.0.0",
+    "cordova-android": "^15.1.0"
   },
   "cordova": {
     "platforms": [
       "android"
     ],
     "plugins": {
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {
+        "ONESIGNAL_ANDROID_SDK_VERSION": "5.1.7"
+      },
+      "cordova-plugin-firebase-core": {},
+      "cordova-plugin-android-permissions": {}
     }
   }
 }
