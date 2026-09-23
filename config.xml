@@ -14,12 +14,8 @@
 <platform name="android">
         <allow-intent href="market:*" />
         <preference name="GooglePlayServicesVersion" value="@integer/google_play_services_version" />
-        <!-- Android Permissions for Notifications -->
-        <config-file parent="/manifest" target="AndroidManifest.xml">
-            <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-        </config-file>
     </platform>
-        <!-- OneSignal Plugin -->
+         <!-- OneSignal Plugin -->
     <plugin name="onesignal-cordova-plugin" spec="^5.5.9">
         <variable name="ONESIGNAL_ANDROID_SDK_VERSION" value="5.1.7" />
     </plugin>
